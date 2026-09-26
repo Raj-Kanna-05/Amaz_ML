@@ -402,4 +402,11 @@ If you have AWS credits or want results in **~35 to 50 minutes** with maximum CP
   4. **Official Artifact Generation:** Documented execution of `pipeline.py predict` generating `candidate_pairs.tsv` and `matching_results.tsv` across all 1.73M test records, followed by `validate_submission.py` checks and `package_submission.py` archiving into `Code_Alchemists_submission.zip`.
 * **Result:** `README.md` and repository are 100% turnkey ready for collaborator cloning and execution.
 
+### [2026-09-26 17:50 IST] — Initialized & Pushed Codebase to GitHub (`Raj-Kanna-05/Amaz_ML`)
+* **Action:** Initialized local Git repository, created `.gitignore` excluding all $>100$ MB datasets/binaries, committed the clean project codebase, and pushed directly to GitHub.
+* **Remote Repository URL:** [https://github.com/Raj-Kanna-05/Amaz_ML](https://github.com/Raj-Kanna-05/Amaz_ML)
+* **Branch:** `main` (tracking `origin/main`).
+* **Clean Commit:** 40 files committed and pushed cleanly (zero TSVs, zero ZIP archives, zero binary weights).
+* **Result:** Repository is publicly accessible and ready for collaborators and teammates to fork, clone, and replicate.
+
 
