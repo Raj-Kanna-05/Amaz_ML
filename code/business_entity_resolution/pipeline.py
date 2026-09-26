@@ -110,9 +110,9 @@ def run_end_to_end(args):
     # 3. Validate Submission
     print("\n=== Validating Submission Files ===")
     workspace_root = os.path.abspath(os.path.join(SCRIPT_DIR, "..", ".."))
-    validator_path = os.path.join(workspace_root, "utils", "validate_submission.py")
+    validator_path = os.path.join(workspace_root, "student_resource", "utils", "validate_submission.py")
     if not os.path.exists(validator_path):
-        validator_path = os.path.join(workspace_root, "student_resource", "utils", "validate_submission.py")
+        validator_path = os.path.join(workspace_root, "utils", "validate_submission.py")
     if os.path.exists(validator_path):
         import subprocess
         cmd = [

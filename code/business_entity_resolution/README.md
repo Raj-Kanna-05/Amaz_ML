@@ -78,7 +78,7 @@ python code/business_entity_resolution/pipeline.py predict \
 Validate formatting, headers, ID constraints, singleton formats, and candidate subset guarantees using the standalone validator:
 
 ```bash
-python utils/validate_submission.py \
+python student_resource/utils/validate_submission.py \
   --matching output/matching_results.tsv \
   --candidate output/candidate_pairs.tsv \
   --test-dir dataset/test

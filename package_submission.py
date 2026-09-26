@@ -45,9 +45,9 @@ def package_submission(team_name: str, test_dir: str, skip_val: bool = False):
 
     # 2. Run validator
     if not skip_val:
-        validator_path = os.path.join("utils", "validate_submission.py")
+        validator_path = os.path.join("student_resource", "utils", "validate_submission.py")
         if not os.path.exists(validator_path):
-            validator_path = os.path.join("student_resource", "utils", "validate_submission.py")
+            validator_path = os.path.join("utils", "validate_submission.py")
         
         if os.path.exists(validator_path):
             print("Running submission validator before packaging...")

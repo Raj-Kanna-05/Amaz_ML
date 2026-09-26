@@ -142,7 +142,7 @@ This automatically writes:
 
 #### 7. Validate Generated Files
 ```bash
-python utils/validate_submission.py --matching output/matching_results.tsv --candidate output/candidate_pairs.tsv --test-dir student_resource/dataset/test
+python student_resource/utils/validate_submission.py --matching output/matching_results.tsv --candidate output/candidate_pairs.tsv --test-dir student_resource/dataset/test
 ```
 
 #### 8. Package Official Submission Archive
@@ -204,7 +204,7 @@ Google Colab Free Tier provides 2 vCPUs and ~12.7 GB RAM. Our memory-safe pipeli
 8. In Cell 6 (Validate & Package for Hackathon):
    ```python
    # Run official validator
-   !python utils/validate_submission.py \
+   !python student_resource/utils/validate_submission.py \
        --matching output/matching_results.tsv \
        --candidate output/candidate_pairs.tsv \
        --test-dir student_resource/dataset/test
