@@ -8,6 +8,7 @@ import os
 import sys
 import numpy as np
 import pandas as pd
+from typing import Dict, List
 
 try:
     from .blocking import CandidateBlocker
@@ -57,11 +58,11 @@ def run_country_validation():
     s1_country_map = dict(zip(s1_df["entity_id"], s1_df["norm_country"]))
     pairs_df["s1_country"] = pairs_df["source1_entity_id"].map(s1_country_map)
 
-    # Countries present in train data: "us" / "in" as numpy boolean arrays
-    us_mask = (pairs_df["s1_country"] == "us").to_numpy()
-    in_mask = (pairs_df["s1_country"] == "in").to_numpy()
+    # Countries present in train data: "us" / "in" as integer index lists
+    us_indices: List[int] = [int(i) for i in np.where(pairs_df["s1_country"] == "us")[0]]
+    in_indices: List[int] = [int(i) for i in np.where(pairs_df["s1_country"] == "in")[0]]
 
-    logger.info(f"Pairs breakdown: US={us_mask.sum()}, India={in_mask.sum()}")
+    logger.info(f"Pairs breakdown: US={len(us_indices)}, India={len(in_indices)}")
 
     all_s1_us = [eid for eid, c in s1_country_map.items() if c == "us"]
     all_s1_in = [eid for eid, c in s1_country_map.items() if c == "in"]
@@ -72,16 +73,16 @@ def run_country_validation():
     results = {}
 
     # --- Experiment 1: Train on India, Test on Held-out US ---
-    if in_mask.sum() > 0 and us_mask.sum() > 0:
+    if len(in_indices) > 0 and len(us_indices) > 0:
         logger.info("\n--- Experiment 1: Train on India, Test on Held-out US ---")
-        X_train_in, y_train_in = X.loc[in_mask], labels[in_mask]
-        X_test_us = X.loc[us_mask]
+        X_train_in, y_train_in = X.iloc[in_indices], labels[in_indices]
+        X_test_us = X.iloc[us_indices]
 
         model_in = EntityMatchingModel(model_type="lightgbm")
         model_in.fit(X_train_in, y_train_in, feature_names=list(X.columns))
         us_preds = model_in.predict_proba(X_test_us)
 
-        us_oof = pairs_df.loc[us_mask][["source1_entity_id", "candidate_entity_id", "retrieved_by_blocking"]].copy()
+        us_oof = pairs_df.iloc[us_indices][["source1_entity_id", "candidate_entity_id", "retrieved_by_blocking"]].copy()
         us_oof["probability"] = list(us_preds)
         realistic_us = us_oof.loc[us_oof["retrieved_by_blocking"] == 1]
 
@@ -96,16 +97,16 @@ def run_country_validation():
         results["India_to_US"] = res_exp1
 
     # --- Experiment 2: Train on US, Test on Held-out India ---
-    if us_mask.sum() > 0 and in_mask.sum() > 0:
+    if len(us_indices) > 0 and len(in_indices) > 0:
         logger.info("\n--- Experiment 2: Train on US, Test on Held-out India ---")
-        X_train_us, y_train_us = X.loc[us_mask], labels[us_mask]
-        X_test_in = X.loc[in_mask]
+        X_train_us, y_train_us = X.iloc[us_indices], labels[us_indices]
+        X_test_in = X.iloc[in_indices]
 
         model_us = EntityMatchingModel(model_type="lightgbm")
         model_us.fit(X_train_us, y_train_us, feature_names=list(X.columns))
         in_preds = model_us.predict_proba(X_test_in)
 
-        in_oof = pairs_df.loc[in_mask][["source1_entity_id", "candidate_entity_id", "retrieved_by_blocking"]].copy()
+        in_oof = pairs_df.iloc[in_indices][["source1_entity_id", "candidate_entity_id", "retrieved_by_blocking"]].copy()
         in_oof["probability"] = list(in_preds)
         realistic_in = in_oof.loc[in_oof["retrieved_by_blocking"] == 1]
 
