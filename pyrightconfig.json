@@ -1,0 +1,14 @@
+{
+  "include": [
+    "code/business_entity_resolution",
+    "business_entity_resolution_pipeline.ipynb",
+    "src",
+    "tests",
+    "utils"
+  ],
+  "extraPaths": [
+    "code/business_entity_resolution/src",
+    "code/business_entity_resolution",
+    "."
+  ]
+}

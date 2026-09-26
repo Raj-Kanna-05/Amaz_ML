@@ -1,0 +1,16 @@
+# Core ML and Data Processing Dependencies
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.10.0
+scikit-learn>=1.3.0
+lightgbm>=4.0.0
+xgboost>=2.0.0
+
+# Text Processing & String Similarity
+rapidfuzz>=3.0.0
+unidecode>=1.3.0
+
+# Utilities & Serialization
+joblib>=1.3.0
+tqdm>=4.65.0
+PyYAML>=6.0

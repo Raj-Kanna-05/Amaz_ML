@@ -1,0 +1,38 @@
+# Environments
+.venv/
+env/
+venv/
+ENV/
+*.env
+
+# Python Bytecode & Caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.pytest_cache/
+*.mypy_cache/
+
+# Large Datasets & Submissions (>100MB exceeds GitHub limits)
+student_resource/dataset/
+dataset/
+output/*.tsv
+*.tsv
+*.zip
+*.tar.gz
+*.joblib
+
+# IDE & Editor Settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.agents/
+
+# OS Specific
+.DS_Store
+Thumbs.db
+student_resource/__MACOSX/
+
+# Temporary / Scratch
+scratch/
+*.log

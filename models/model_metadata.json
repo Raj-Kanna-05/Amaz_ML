@@ -1,0 +1,121 @@
+{
+  "model_type": "lightgbm",
+  "best_threshold": 0.44,
+  "best_cv_macro_f05": 0.9949496117504374,
+  "cv_metrics": {
+    "macro_f05": 0.9949496117504374,
+    "macro_precision": 0.9960744047619048,
+    "macro_recall": 0.9932271825396826,
+    "singleton_accuracy": 0.9829059829059829,
+    "num_entities": 2000,
+    "num_true_singletons": 117,
+    "num_pred_singletons": 115
+  },
+  "blocking_recall": {
+    "candidate_recall": 0.9165473804752362,
+    "total_true_pairs": 6986,
+    "retrieved_true_pairs": 6403,
+    "missed_true_pairs": 583,
+    "total_candidate_pairs": 183579,
+    "avg_candidates_per_s1": 91.7895
+  },
+  "feature_names": [
+    "name_fuzz_ratio",
+    "name_partial_ratio",
+    "name_token_sort_ratio",
+    "name_token_set_ratio",
+    "core_name_ratio",
+    "core_name_token_sort",
+    "name_token_jaccard",
+    "name_token_overlap_count",
+    "name_token_diff_count",
+    "name_first_token_match",
+    "name_char_3gram_jaccard",
+    "name_len_diff",
+    "name_len_ratio",
+    "name_exact_match",
+    "addr_fuzz_ratio",
+    "addr_partial_ratio",
+    "addr_token_sort_ratio",
+    "addr_token_set_ratio",
+    "addr_token_jaccard",
+    "addr_token_overlap_count",
+    "addr_exact_match",
+    "addr_num_overlap_count",
+    "addr_num_jaccard",
+    "addr_num_exact_match",
+    "addr_num_any_match",
+    "addr_num_diff",
+    "country_exact_match",
+    "country_mismatch",
+    "country_missing_either",
+    "s1_name_in_t_addr",
+    "t_name_in_s1_addr",
+    "is_s2",
+    "blocking_score",
+    "blocking_rank",
+    "composite_score"
+  ],
+  "top_features": [
+    [
+      "blocking_score",
+      0.11366666666666667
+    ],
+    [
+      "blocking_rank",
+      0.06666666666666667
+    ],
+    [
+      "addr_token_jaccard",
+      0.05677777777777778
+    ],
+    [
+      "name_partial_ratio",
+      0.05488888888888889
+    ],
+    [
+      "name_token_sort_ratio",
+      0.05466666666666667
+    ],
+    [
+      "name_token_jaccard",
+      0.050222222222222224
+    ],
+    [
+      "addr_token_set_ratio",
+      0.04922222222222222
+    ],
+    [
+      "name_char_3gram_jaccard",
+      0.04733333333333333
+    ],
+    [
+      "addr_fuzz_ratio",
+      0.03911111111111111
+    ],
+    [
+      "core_name_token_sort",
+      0.03777777777777778
+    ],
+    [
+      "addr_partial_ratio",
+      0.03777777777777778
+    ],
+    [
+      "name_len_diff",
+      0.036
+    ],
+    [
+      "name_len_ratio",
+      0.035666666666666666
+    ],
+    [
+      "name_fuzz_ratio",
+      0.035333333333333335
+    ],
+    [
+      "name_token_set_ratio",
+      0.033
+    ]
+  ]
+}
