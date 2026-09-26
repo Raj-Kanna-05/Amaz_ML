@@ -58,9 +58,9 @@ def run_country_validation():
     s1_country_map = dict(zip(s1_df["entity_id"], s1_df["norm_country"]))
     pairs_df["s1_country"] = pairs_df["source1_entity_id"].map(s1_country_map)
 
-    # Countries present in train data: "us" / "in" as integer index lists
-    us_indices: List[int] = [int(i) for i in np.where(pairs_df["s1_country"] == "us")[0]]
-    in_indices: List[int] = [int(i) for i in np.where(pairs_df["s1_country"] == "in")[0]]
+    # Countries present in train data: "us" / "in" as pure integer index lists (no np.where overload issues)
+    us_indices: List[int] = [i for i, c in enumerate(pairs_df["s1_country"]) if c == "us"]
+    in_indices: List[int] = [i for i, c in enumerate(pairs_df["s1_country"]) if c == "in"]
 
     logger.info(f"Pairs breakdown: US={len(us_indices)}, India={len(in_indices)}")
 
